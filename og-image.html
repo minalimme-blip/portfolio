@@ -5,175 +5,149 @@
 <title>OG Image — Mina Lim Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     width: 1200px;
     height: 630px;
     background: #0a0a0a;
-    color: #fff;
-    font-family: 'Inter', sans-serif;
+    color: #fafaf7;
     overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
   }
   .card {
     width: 1200px;
     height: 630px;
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
     position: relative;
-  }
-  .left {
-    padding: 60px 56px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #0a0a0a;
-    z-index: 2;
+    align-items: center;
+    padding: 56px 80px;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(255, 217, 46, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(255, 128, 37, 0.06) 0%, transparent 50%),
+      #0a0a0a;
   }
-  .top-row {
+  /* corner brackets */
+  .card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255, 217, 46, 0.5);
+  }
+  .card::before {
+    top: 32px;
+    left: 32px;
+    border-right: none;
+    border-bottom: none;
+  }
+  .card::after {
+    bottom: 32px;
+    right: 32px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .top-bar, .bottom-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .top-bar .left, .bottom-bar .left { color: #ff8025; }
+  .top-bar .right, .bottom-bar .right { color: #888; }
+
+  .hero {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .hero .eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.32em;
+    color: #ffd92e;
+    text-transform: uppercase;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    color: #ff8025;
-    text-transform: uppercase;
+    gap: 14px;
   }
-  .top-row .star { color: #ffd92e; }
+  .hero .eyebrow .line {
+    width: 32px;
+    height: 1px;
+    background: #ffd92e;
+  }
   .name {
     font-family: 'DM Serif Display', serif;
     font-weight: 400;
-    font-size: 96px;
-    line-height: 0.95;
+    font-size: 240px;
+    line-height: 0.92;
     letter-spacing: -0.02em;
-    margin-top: 12px;
+    color: #fafaf7;
+    text-align: center;
   }
   .name em {
     font-style: italic;
     color: #ffd92e;
+    margin-left: 8px;
   }
-  .role {
-    font-family: 'Inter', sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    color: #d4d4d4;
-    margin-top: 16px;
-    line-height: 1.3;
-  }
-  .role span { color: #ff8025; }
-  .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 20px;
-    margin-top: 24px;
-  }
-  .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .stat .num {
-    font-weight: 800;
-    font-size: 28px;
-    background: linear-gradient(135deg, #ffd92e, #ff8025);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-  }
-  .stat .lbl {
-    font-size: 11px;
-    color: #888;
+  .tagline {
+    margin-top: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+    color: #aaa;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    line-height: 1.3;
-  }
-  .footer {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: #666;
-    margin-top: 12px;
+    gap: 14px;
   }
-  .footer .dot { width: 6px; height: 6px; border-radius: 50%; background: #ffd92e; }
-
-  .right {
-    position: relative;
-    overflow: hidden;
-  }
-  .right .photo {
-    position: absolute;
-    inset: 0;
-    background-image: url('images/profile.jpg');
-    background-size: cover;
-    background-position: 35% center;
-  }
-  .right .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.45) 18%, rgba(10,10,10,0) 50%);
-  }
-  .right .accent {
-    position: absolute;
-    bottom: 32px;
-    right: 32px;
-    background: #ffd92e;
-    color: #0a0a0a;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 999px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  .tagline .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ff8025;
   }
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="left">
-    <div>
-      <div class="top-row">
-        <span>PORTFOLIO</span>
-        <span class="star">✦</span>
-        <span>INDUSTRIAL B2B</span>
-      </div>
-      <div class="name">Mina <em>Lim</em></div>
-      <div class="role">Product Marketing for<br>technical <span>capital equipment</span></div>
+  <div class="top-bar">
+    <span class="left">◉ Portfolio · Vol. 1 · 2026</span>
+    <span class="right"></span>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">
+      <span class="line"></span>
+      Product Marketing
+      <span class="line"></span>
     </div>
-    <div>
-      <div class="stats">
-        <div class="stat">
-          <div class="num">158+</div>
-          <div class="lbl">Leads · ARA + BAUMA '25</div>
-        </div>
-        <div class="stat">
-          <div class="num">−49%</div>
-          <div class="lbl">CPC · U.S. expansion</div>
-        </div>
-        <div class="stat">
-          <div class="num">+200%</div>
-          <div class="lbl">YoY pipeline · U.S.</div>
-        </div>
-        <div class="stat">
-          <div class="num">10+</div>
-          <div class="lbl">Markets · distributor reach</div>
-        </div>
-      </div>
-      <div class="footer">
-        <span class="dot"></span>
-        <span>Tampere, Finland · Dinolift Oy</span>
-      </div>
+    <div class="name">Mina <em>Lim</em></div>
+    <div class="tagline">
+      <span>Industrial B2B</span>
+      <span class="dot"></span>
+      <span>Capital Equipment</span>
+      <span class="dot"></span>
+      <span>Tampere, FI</span>
     </div>
   </div>
-  <div class="right">
-    <div class="photo"></div>
-    <div class="overlay"></div>
-    <div class="accent">↗ View portfolio</div>
+
+  <div class="bottom-bar">
+    <span class="left"></span>
+    <span class="right">↗ View portfolio</span>
   </div>
 </div>
 </body>
